@@ -1,12 +1,14 @@
 function renderWaterfall(rootNode, columnCount, elementGap) {
   // const container = document.querySelector('.root');
-  const element = rootNode.querySelectorAll('div');
+  const element = rootNode.querySelectorAll('p');
 
   // считаем кол-во эл в колонке
   let num = rootNode.children.length;
 
   //  указываем размеры элементов
   element.forEach(el => el.style.height = 'inherit');
+  element.forEach(el => el.style.width = '150px');
+  element.forEach(el => el.style.margin = '0px');
   
   // создаем столбцы
   let arrOfElements = [];
@@ -49,6 +51,7 @@ function renderWaterfall(rootNode, columnCount, elementGap) {
  
   rootNode.style.display = 'flex';
   rootNode.style.gap = `${elementGap}px`;
+  rootNode.style.justifyContent = 'center';
   col.forEach(el => {
     el.style.gap = `${elementGap}px`;
     el.style.display = 'flex';
@@ -58,4 +61,8 @@ function renderWaterfall(rootNode, columnCount, elementGap) {
   }
 
 let container = document.querySelector('.root')
-renderWaterfall(container, 3, 10)
+// renderWaterfall(container, 3, 20)
+
+let a = +prompt('Введите количество колонок: ');
+let b = +prompt('Введите расстояние между колонками в пикселях: ');
+setTimeout(renderWaterfall, 1000, container, a, b)
